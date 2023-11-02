@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #555;
+  padding: 1rem;
+}
+header {
+  width: 100%;
+  max-width: 768px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #eee;
+}
+a {
+  text-decoration: none;
+  color: #eee;
+}
+
+.kita-logo {
+  max-width: 4rem;
+  margin: auto;
+}
+.kita-logo img {
+  max-width: 100%;
+}
+
+.title-kita {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #eee;
+}
+
+.items-container {
+  width: 100%;
+  max-width: 768px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item {
+  padding: 2rem;
+  background-color: #333;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #eee;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.items-detail-container {
+  width: 100%;
+  max-width: 768px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+}
+.item-detail {
+  background-color: #333;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #eee;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  overflow: hidden;
+  height: 300px;
+  position: relative;
+}
+.item-detail img {
+  object-fit: cover;
+  height: 100%;
+}
+.button-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  text-align: center;
+}
+.button-download {
+  font-weight: normal;
+  font-size: 1.3rem;
+  display: block;
+}

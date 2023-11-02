@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kita Project Drive</title>
+    <link rel="stylesheet" href="/style/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="kita-logo"><img src="/style/kitaproject_logo.png" /></div>
+      <h1 class="title-kita">Kita Project Photobooth Drive</h1>
+      <p>Silahkan buka folder anda, sesuai nomor yang diberikan editor.</p>
+    </header>
+    <div id="app"></div>
+    <script>
+      const getData = async () => {
+        const data = await fetch('<%= baseIp%>/api')
+
+        return data.json()
+      }
+
+      document.addEventListener('DOMContentLoaded', async () => {
+        const app = document.querySelector('#app')
+        try {
+          const { data } = await getData()
+          const exceptDir = ['style', 'sony']
+          const divElement = document.createElement('div')
+          divElement.setAttribute('class', 'items-container')
+
+          data.forEach((item) => {
+            if (!exceptDir.includes(item.name)) {
+              const html = `
+              <a href="/${item.name}">
+                <div class='item'>${item.name}</div>
+              </a>`
+
+              divElement.innerHTML += html
+            }
+            app.append(divElement)
+          })
+        } catch (error) {
+          app.innerHTML = `<h1>${error}</h1>`
+        }
+      })
+    </script>
+  </body>
+</html>

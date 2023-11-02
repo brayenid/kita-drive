@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail</title>
+    <link rel="stylesheet" href="/style/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="kita-logo"><img src="/style/kitaproject_logo.png" /></div>
+      <h1 class="title-kita"><a href="/"> ← Kembali </a></h1>
+      <p>Silahkan unduh satu-satu file anda dengan menekan tombol di bawah gambar.</p>
+    </header>
+    <div id="app"></div>
+    <script>
+      const getData = async () => {
+        const data = await fetch(`<%= baseIp%>/api/<%= paramsView %>`)
+
+        return data.json()
+      }
+
+      document.addEventListener('DOMContentLoaded', async () => {
+        const app = document.querySelector('#app')
+        const { data } = await getData()
+        const divElement = document.createElement('div')
+        divElement.setAttribute('class', 'items-detail-container')
+
+        data.forEach((item) => {
+          const html = `
+        <div class='item-detail'>
+            <img src="<%= baseIp%>/${'<%= paramsView %>'}/${item.name}">
+            <div class='button-container'>
+                <a class="button-download" href="<%= paramsView %>/${item.name}" download="${item.name}">Download - ${item.name}</a>
+            </div>
+        </div>
+        `
+          divElement.innerHTML += html
+        })
+
+        app.append(divElement)
+      })
+    </script>
+  </body>
+</html>
